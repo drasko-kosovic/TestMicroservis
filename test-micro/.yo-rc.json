@@ -39,6 +39,8 @@
     "skipCommitHook": true,
     "jwtSecretKey": "ZjYwMWUwMjU5NDUzZDljNTViZTE0MzNjM2Y1NzcwZTc3YzQ1YWZlNWYwZGMwMThhOTdkMDg5YTg2ZTg4MTI0OWE1OTM5NTNhN2M3NmVkNzkxNzE3MTA4Y2JhODY4OWI3YzhhNDllZmZkNmQ0OWQwZmFhODUzZTY3YzQ3ZWFjNDk=",
     "enableGradleEnterprise": false,
-    "languages": ["en", "fr"]
+    "languages": ["en", "fr"],
+    "lastLiquibaseTimestamp": 1631819250000,
+    "entities": ["Proba"]
   }
 }

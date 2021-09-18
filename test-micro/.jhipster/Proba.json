@@ -1,0 +1,17 @@
+{
+  "microserviceName": "testmicro",
+  "clientRootFolder": "testmicro",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "ime",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "service": "no",
+  "readOnly": false,
+  "pagination": "no",
+  "name": "Proba",
+  "changelogDate": "20210916190730"
+}
