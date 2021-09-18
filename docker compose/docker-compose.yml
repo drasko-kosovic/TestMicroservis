@@ -1,0 +1,61 @@
+services:
+  testgetaway:
+    image: testgetaway
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,api-docs
+      - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
+      - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
+      - SPRING_R2DBC_URL=r2dbc:mysql://testgetaway-mysql:3306/testgetaway?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+      - SPRING_LIQUIBASE_URL=jdbc:mysql://testgetaway-mysql:3306/testgetaway?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+      - JHIPSTER_SLEEP=30
+      - JHIPSTER_REGISTRY_PASSWORD=admin
+    ports:
+      - "8080:8080"
+  testgetaway-mysql:
+    image: mysql:8.0.26
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=testgetaway
+    command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp
+
+  testmicro:
+    image: testmicro
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,api-docs
+      - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
+      - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://testmicro-postgresql:5432/testmicro
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://testmicro-postgresql:5432/testmicro
+      - JHIPSTER_SLEEP=30
+      - JHIPSTER_REGISTRY_PASSWORD=admin
+  testmicro-postgresql:
+    image: postgres:13.4
+    environment:
+      - POSTGRES_USER=testmicro
+      - POSTGRES_PASSWORD=
+      - POSTGRES_HOST_AUTH_METHOD=trust
+
+  jhipster-registry:
+    image: jhipster/jhipster-registry:v7.0.0
+    volumes:
+      - ./central-server-config:/central-config
+    # By default the JHipster Registry runs with the "dev" and "native"
+    # Spring profiles.
+    # "native" profile means the filesystem is used to store data, see
+    # http://cloud.spring.io/spring-cloud-config/spring-cloud-config.html
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_SECURITY_USER_PASSWORD=admin
+      - JHIPSTER_REGISTRY_PASSWORD=admin
+      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_TYPE=native
+      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_SEARCH_LOCATIONS=file:./central-config
+      # - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_TYPE=git
+      # - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_URI=https://github.com/jhipster/jhipster-registry/
+      # - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_SEARCH_PATHS=central-config
+    ports:
+      - 8761:8761

@@ -1,0 +1,11 @@
+{
+  "generator-jhipster": {
+    "appsFolders": ["test-getaway", "test-micro"],
+    "directoryPath": "../",
+    "gatewayType": "SpringCloudGateway",
+    "clusteredDbApps": {},
+    "monitoring": "no",
+    "serviceDiscoveryType": "eureka",
+    "jwtSecretKey": "ZTBhZjJiYWEyNzYyMWVjZjVmZDBiM2Y3NjgwODgzYzQ2MzllNGYxNjQ1Mjk3NmVkMzg2NjM2MzYxYTc0ZmUzOTQ0MzRiN2E3N2E3ZjU0NjdlYWU1ZjZkOWVmMmQ3NjVkMjA4OQ=="
+  }
+}
