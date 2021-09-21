@@ -1,0 +1,17 @@
+{
+  "generator-jhipster": {
+    "appsFolders": ["test-getaway", "test-micro"],
+    "directoryPath": "../",
+    "clusteredDbApps": {},
+    "serviceDiscoveryType": "eureka",
+    "jwtSecretKey": "YzJmYzYwOWEyM2E0NDJmMzM0N2JiM2VhM2E2YTcxZjAxM2NhNTg5M2JiYTE2NTdiMGNjN2JjMWFlMjdhMTY4OGE4ZDk0ZTM3MDdkYzFhMTkzMzJkNzZkYmYyMWI0ODM2MzdmOQ==",
+    "dockerRepositoryName": "drasko1959",
+    "dockerPushCommand": "docker push",
+    "kubernetesNamespace": "default",
+    "kubernetesServiceType": "LoadBalancer",
+    "kubernetesUseDynamicStorage": false,
+    "ingressDomain": "",
+    "monitoring": "no",
+    "istio": false
+  }
+}

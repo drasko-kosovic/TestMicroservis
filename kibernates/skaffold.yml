@@ -1,0 +1,15 @@
+apiVersion: skaffold/v1
+kind: Config
+build:
+  artifacts:
+    - image: drasko1959/testgetaway
+      context: ../test-getaway
+      jib: {}
+    - image: drasko1959/testmicro
+      context: ../test-micro
+      jib: {}
+  tagPolicy:
+    envTemplate:
+      template: "{{.IMAGE_NAME}}:latest"
+deploy:
+  kustomize: {}
